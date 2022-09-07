@@ -74,7 +74,16 @@
                       </ul>
                     </li>
                   </div>
-                  <div class="images"></div>
+                  <div class="images">
+                    <img
+                      src="https://htmldemo.net/corano/corano/assets/img/banner/img1-static-menu.jpg"
+                      alt="..."
+                    />
+                    <img
+                      src="https://htmldemo.net/corano/corano/assets/img/banner/img2-static-menu.jpg"
+                      alt="..."
+                    />
+                  </div>
                 </ul>
               </a>
             </li>
@@ -154,6 +163,7 @@ export default {
 $color-bg: #f4f4f4;
 $color-text: #555555;
 $color-white: #fff;
+$color-black: #000;
 $color-gold: #c29958;
 $color-border: #efefef;
 $color-bg-search: #f7f7f7;
@@ -210,6 +220,82 @@ $color-border-search: #ddd;
                 .home__ul {
                   display: flex;
                 }
+                .pages__ul {
+                  display: block;
+                }
+              }
+              .pages__ul {
+                width: 75vw;
+                padding: 40px 30px;
+                display: none;
+                background-color: $color-white;
+                color: $color-text;
+                position: absolute;
+                top: 100px;
+                left: -280px;
+                border: solid 1px $color-border;
+                .columns {
+                  display: grid;
+                  grid-template-columns: repeat(4, 1fr);
+                  text-align: left;
+                  > li {
+                    .title {
+                      padding-bottom: 10px;
+                      font-size: 1rem;
+                      font-weight: bold;
+                      color: $color-black;
+                      border-bottom: solid 2px $color-border;
+                      position: relative;
+                      cursor: text;
+                      &:before {
+                        content: "______";
+                        color: $color-gold;
+                        position: absolute;
+                        top: 13px;
+                      }
+                    }
+                    ul {
+                      margin-top: 25px;
+                      font-size: 0.85rem;
+                      li {
+                        position: relative;
+                        a {
+                          height: 40px;
+                          display: flex;
+                          align-items: center;
+                          width: 100%;
+                          cursor: pointer;
+                          transition: 400ms all;
+                          &:before {
+                            content: "__";
+                            position: absolute;
+                            top: 6px;
+                            left: 0px;
+                            opacity: 0;
+                            transition: opacity 400ms;
+                            font-weight: bold;
+                          }
+
+                          &:hover {
+                            color: $color-gold;
+                            margin-left: 18px;
+                            &:before {
+                              opacity: 1;
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+                .images {
+                  display: flex;
+                  gap: 30px;
+                  margin-top: 20px;
+                  img {
+                    flex-basis: 50%;
+                  }
+                }
               }
               .home__ul {
                 display: none;
@@ -230,14 +316,14 @@ $color-border-search: #ddd;
                     display: flex;
                     align-items: center;
                     border-bottom: $color-border 1px dotted;
-                    transition: 300ms all;
+                    transition: 400ms all;
                     &:before {
                       content: "__";
                       position: absolute;
                       top: 5px;
                       left: 21px;
                       opacity: 0;
-                      transition: opacity 300ms;
+                      transition: opacity 400ms;
                       font-weight: bold;
                     }
 
