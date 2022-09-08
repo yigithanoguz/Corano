@@ -12,7 +12,7 @@
                 >Home <i class="bi bi-chevron-down"></i>
                 <ul class="home__ul">
                   <li>
-                    <a><span></span> Home Version 01</a>
+                    <a>Home Version 01</a>
                   </li>
                   <li>
                     <a>Home Version 02</a>
@@ -88,10 +88,81 @@
               </a>
             </li>
             <li>
-              <a>Shop <i class="bi bi-chevron-down"></i></a>
+              <a
+                >Shop <i class="bi bi-chevron-down"></i>
+                <ul class="shop__ul">
+                  <li>
+                    <a>Shop Layout</a>
+                    <i class="bi bi-chevron-right"></i>
+                    <ul class="shop__ul-ul">
+                      <li>
+                        <a>Shop Grid Sidebar</a>
+                      </li>
+                      <li>
+                        <a>Shop Grid Sidebar</a>
+                      </li>
+                      <li>
+                        <a>Shop Grid Sidebar</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a>Shop Layout</a>
+                    <i class="bi bi-chevron-right"></i>
+                    <ul class="shop__ul-ul">
+                      <li>
+                        <a>Shop Grid Sidebar</a>
+                      </li>
+                      <li>
+                        <a>Shop Grid Sidebar</a>
+                      </li>
+                      <li>
+                        <a>Shop Grid Sidebar</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a>Shop Layout</a>
+                    <i class="bi bi-chevron-right"></i>
+                    <ul class="shop__ul-ul">
+                      <li>
+                        <a>Shop Grid Sidebar</a>
+                      </li>
+                      <li>
+                        <a>Shop Grid Sidebar</a>
+                      </li>
+                      <li>
+                        <a>Shop Grid Sidebar</a>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </a>
             </li>
             <li>
-              <a>Blog <i class="bi bi-chevron-down"></i></a>
+              <a
+                >Blog <i class="bi bi-chevron-down"></i>
+                <ul class="blog__ul">
+                  <li>
+                    <a>Blog Left Sidebar 01</a>
+                  </li>
+                  <li>
+                    <a>Blog Left Sidebar 02</a>
+                  </li>
+                  <li>
+                    <a>Blog Left Sidebar 03</a>
+                  </li>
+                  <li>
+                    <a>Blog Left Sidebar 04</a>
+                  </li>
+                  <li>
+                    <a>Blog Left Sidebar 05</a>
+                  </li>
+                  <li>
+                    <a>Blog Left Sidebar 06</a>
+                  </li>
+                </ul>
+              </a>
             </li>
             <li>
               <a>Contact Us</a>
@@ -223,6 +294,102 @@ $color-border-search: #ddd;
                 .pages__ul {
                   display: block;
                 }
+                .blog__ul {
+                  display: flex;
+                }
+                .shop__ul {
+                  display: flex;
+                }
+              }
+              .shop__ul {
+                display: none;
+                width: 220px;
+                flex-direction: column;
+                color: $color-text;
+                background-color: $color-white;
+                position: absolute;
+                top: 100px;
+                left: 0;
+                border: solid 1px $color-border;
+                li {
+                  position: relative;
+                  &:hover {
+                    color: $color-gold;
+                    .shop__ul-ul {
+                      display: flex;
+                    }
+                  }
+                  i.bi {
+                    position: absolute;
+                    top: 15px;
+                    right: 15px;
+                  }
+                  .shop__ul-ul {
+                    display: none;
+                    width: 220px;
+                    flex-direction: column;
+                    color: $color-text;
+                    background-color: $color-white;
+                    position: absolute;
+                    top: 0;
+                    left: 218px;
+                    border: solid 1px $color-border;
+                    li {
+                      position: relative;
+                      a {
+                        height: 45px;
+                        width: 100%;
+                        padding: 0 20px;
+                        display: flex;
+                        align-items: center;
+                        border-bottom: $color-border 1px dotted;
+                        transition: 400ms all;
+                        &:before {
+                          content: "__";
+                          position: absolute;
+                          top: 5px;
+                          left: 21px;
+                          opacity: 0;
+                          transition: opacity 400ms;
+                          font-weight: bold;
+                        }
+
+                        &:hover {
+                          color: $color-gold;
+                          margin-left: 18px;
+                          &:before {
+                            opacity: 1;
+                          }
+                        }
+                      }
+                    }
+                  }
+                  a {
+                    height: 45px;
+                    width: 100%;
+                    padding: 0 20px;
+                    display: flex;
+                    align-items: center;
+                    border-bottom: $color-border 1px dotted;
+                    transition: 400ms all;
+                    &:before {
+                      content: "__";
+                      position: absolute;
+                      top: 5px;
+                      left: 21px;
+                      opacity: 0;
+                      transition: opacity 400ms;
+                      font-weight: bold;
+                    }
+
+                    &:hover {
+                      margin-left: 18px;
+                      &:before {
+                        opacity: 1;
+                      }
+                    }
+                  }
+                }
               }
               .pages__ul {
                 width: 75vw;
@@ -298,6 +465,46 @@ $color-border-search: #ddd;
                 }
               }
               .home__ul {
+                display: none;
+                width: 220px;
+                flex-direction: column;
+                color: $color-text;
+                background-color: $color-white;
+                position: absolute;
+                top: 100px;
+                left: 0;
+                border: solid 1px $color-border;
+                li {
+                  position: relative;
+                  a {
+                    height: 45px;
+                    width: 100%;
+                    padding: 0 20px;
+                    display: flex;
+                    align-items: center;
+                    border-bottom: $color-border 1px dotted;
+                    transition: 400ms all;
+                    &:before {
+                      content: "__";
+                      position: absolute;
+                      top: 5px;
+                      left: 21px;
+                      opacity: 0;
+                      transition: opacity 400ms;
+                      font-weight: bold;
+                    }
+
+                    &:hover {
+                      color: $color-gold;
+                      margin-left: 18px;
+                      &:before {
+                        opacity: 1;
+                      }
+                    }
+                  }
+                }
+              }
+              .blog__ul {
                 display: none;
                 width: 220px;
                 flex-direction: column;
