@@ -242,7 +242,6 @@ $color-border-search: #ddd;
 
 .header {
   height: 100px;
-  display: flex;
   .container {
     height: 100%;
     width: 75%;
