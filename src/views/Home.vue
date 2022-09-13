@@ -5,6 +5,8 @@
     <TopBar />
     <Header />
     <Slider />
+    <AboutUs />
+    <our-products :products="products" />
   </div>
 </template>
 
@@ -14,6 +16,8 @@
 import TopBar from '@/components/TopBar.vue'
 import Header from '@/components/Header.vue'
 import Slider from '@/components/Slider.vue'
+import AboutUs from '@/components/AboutUs.vue'
+import OurProducts from '@/components/OurProducts.vue'
 
 export default {
   name: 'Home',
@@ -21,7 +25,14 @@ export default {
     // HelloWorld
     TopBar,
     Header,
-    Slider
-  }
+    Slider,
+    AboutUs,
+    OurProducts
+  },
+  props: {
+    products: {
+      type: Array
+    }
+  },
 }
 </script>

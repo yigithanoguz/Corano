@@ -44,7 +44,8 @@ export default {
   name: "slider",
   data() {
     return {
-      isActive: true,
+      // isActive: true,
+      // animationIterationCount: 1,
       item: 0,
       slider: [
         {
@@ -96,14 +97,10 @@ export default {
         }
       }, 1);
     },
-    test() {
-      // this.isActive = !this.isActive;
-      // this.isActive = !this.isActive;
-    },
   },
   mounted() {
     this.slide();
-    this.animation();
+    // this.animation();
   },
   watch: {
     item(value) {
@@ -113,8 +110,7 @@ export default {
       if (value === -1) {
         this.item = 2;
       }
-      console.log(value);
-      this.animation();
+      // this.animation();
     },
   },
 };
@@ -165,7 +161,6 @@ $color-slide-button: #777777;
   &:hover {
     padding: 0 20px;
     > button {
-      display: block;
       opacity: 1;
     }
   }
@@ -181,7 +176,7 @@ $color-slide-button: #777777;
     &:hover {
       color: $color-gold;
     }
-    z-index: 10;
+    z-index: 3;
     cursor: pointer;
   }
   .container {
@@ -203,8 +198,9 @@ $color-slide-button: #777777;
       color: $color-black;
       line-height: 60px;
       user-select: none;
-      // animation-name: scroll-down;
-      // animation-duration: 1s;
+      animation-name: scroll-down;
+      animation-duration: 2s;
+
     }
     .slider-info {
       font-size: 1.2rem;

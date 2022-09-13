@@ -242,6 +242,19 @@ $color-border-search: #ddd;
 
 .header {
   height: 100px;
+  z-index: 5;
+  background-color: $color-white;
+  border-bottom: solid 1px $color-border;
+  &.position-sticky {
+    position: sticky;
+    height: 65px;
+    top: 0;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    ul {
+      top: 64px !important;
+
+    }
+  }
   .container {
     height: 100%;
     width: 75%;
@@ -265,6 +278,7 @@ $color-border-search: #ddd;
       .link {
         height: 100%;
         font-size: 0.95rem;
+        z-index: 3;
         > ul {
           height: 100%;
           display: flex;
@@ -634,7 +648,7 @@ $color-border-search: #ddd;
                 background-color: $color-white;
                 color: $color-text;
                 border: solid 1px $color-border;
-                z-index: 1;
+                z-index: 3;
               }
               &:hover {
                 ul {
