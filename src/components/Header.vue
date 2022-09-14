@@ -252,7 +252,6 @@ $color-border-search: #ddd;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     ul {
       top: 64px !important;
-
     }
   }
   .container {
@@ -321,11 +320,12 @@ $color-border-search: #ddd;
                 color: $color-text;
                 background-color: $color-white;
                 position: absolute;
-                top: 100px;
+                top: 99px;
                 left: 0;
                 border: solid 1px $color-border;
                 li {
                   position: relative;
+                  border-bottom: $color-border 1px dotted;
                   &:hover {
                     color: $color-gold;
                     .shop__ul-ul {
@@ -349,13 +349,14 @@ $color-border-search: #ddd;
                     border: solid 1px $color-border;
                     li {
                       position: relative;
+                      border-bottom: $color-border 1px dotted;
                       a {
                         height: 45px;
                         width: 100%;
                         padding: 0 20px;
                         display: flex;
                         align-items: center;
-                        border-bottom: $color-border 1px dotted;
+
                         transition: 400ms all;
                         &:before {
                           content: "__";
@@ -383,7 +384,7 @@ $color-border-search: #ddd;
                     padding: 0 20px;
                     display: flex;
                     align-items: center;
-                    border-bottom: $color-border 1px dotted;
+
                     transition: 400ms all;
                     &:before {
                       content: "__";
@@ -411,7 +412,7 @@ $color-border-search: #ddd;
                 background-color: $color-white;
                 color: $color-text;
                 position: absolute;
-                top: 100px;
+                top: 99px;
                 left: -280px;
                 border: solid 1px $color-border;
                 .columns {
@@ -424,14 +425,25 @@ $color-border-search: #ddd;
                       font-size: 1rem;
                       font-weight: bold;
                       color: $color-black;
-                      border-bottom: solid 2px $color-border;
+                      // border-bottom: solid 2px $color-border;
                       position: relative;
                       cursor: text;
                       &:before {
-                        content: "______";
-                        color: $color-gold;
+                        content: "";
+                        width: 50%;
                         position: absolute;
-                        top: 13px;
+                        top: 30px;
+                        left: 0;
+                        border-bottom: solid 2px $color-gold;
+                        z-index: 1;
+                      }
+                      &:after {
+                        content: "";
+                        width: 100%;
+                        position: absolute;
+                        top: 30px;
+                        left: 0;
+                        border-bottom: solid 2px $color-border;
                       }
                     }
                     ul {
@@ -484,18 +496,19 @@ $color-border-search: #ddd;
                 color: $color-text;
                 background-color: $color-white;
                 position: absolute;
-                top: 100px;
+                top: 99px;
                 left: 0;
                 border: solid 1px $color-border;
                 li {
                   position: relative;
+                  border-bottom: $color-border 1px dotted;
                   a {
                     height: 45px;
                     width: 100%;
                     padding: 0 20px;
                     display: flex;
                     align-items: center;
-                    border-bottom: $color-border 1px dotted;
+
                     transition: 400ms all;
                     &:before {
                       content: "__";
@@ -524,18 +537,19 @@ $color-border-search: #ddd;
                 color: $color-text;
                 background-color: $color-white;
                 position: absolute;
-                top: 100px;
+                top: 99px;
                 left: 0;
                 border: solid 1px $color-border;
                 li {
                   position: relative;
+                  border-bottom: $color-border 1px dotted;
                   a {
                     height: 45px;
                     width: 100%;
                     padding: 0 20px;
                     display: flex;
                     align-items: center;
-                    border-bottom: $color-border 1px dotted;
+
                     transition: 400ms all;
                     &:before {
                       content: "__";

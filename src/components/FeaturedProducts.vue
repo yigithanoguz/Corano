@@ -1,22 +1,8 @@
 <template>
-  <div class="our-products">
+  <div class="featured-products">
     <div class="container">
-      <div class="title">Our Products</div>
-      <div class="sub-title">Add our products to weekly lineup</div>
-      <ul>
-        <li>
-          <a class="selected"> Entertainment </a>
-        </li>
-        <li>
-          <a> Storage </a>
-        </li>
-        <li>
-          <a> Lying </a>
-        </li>
-        <li>
-          <a> Tables </a>
-        </li>
-      </ul>
+      <div class="title">Featured Products</div>
+      <div class="sub-title">Add featured products to weekly lineup</div>
       <div class="slider-buttons">
         <div class="slider">
           <div
@@ -24,42 +10,83 @@
             :style="{ left: `calc(${left}% - ${cardIndex * 5}px)` }"
             @mousedown="test"
           >
-            <div class="card" v-for="(item, index) in products" :key="index">
-              <div class="product-image">
-                <img class="img-1" :src="item.imageLink" alt="..." />
-                <!-- <img class="img-2" :src="item.imageLink2" alt="..." /> -->
-                <span class="product-case"> {{ item.case }} </span>
-                <span class="product-discount"
-                  >{{ item.discountPrice * 100 }}%</span
-                >
-                <button class="favorites">
-                  <i class="bi bi-suit-heart"></i>
-                </button>
-                <button class="details"><i class="bi bi-search"></i></button>
-                <button class="add-to-cart">Add To Cart</button>
-              </div>
-              <div class="product-info">
-                <div class="product-type">{{ item.type }}</div>
-                <ul class="product-colors">
-                  <li>
-                    <a></a>
-                  </li>
-                  <li>
-                    <a></a>
-                  </li>
-                  <li>
-                    <a></a>
-                  </li>
-                  <li>
-                    <a></a>
-                  </li>
-                </ul>
-                <div class="product-name">{{ item.name }}</div>
-                <div class="product-price">
-                  <span class="sale-price"
-                    >${{ (item.price * item.discountPrice).toFixed(2) }}</span
+            <div class="card-group" v-for="(item, index) in products" :key="index">
+              <div class="card">
+                <div class="product-image">
+                  <img class="img-1" :src="item.imageLink" alt="..." />
+                  <!-- <img class="img-2" :src="item.imageLink2" alt="..." /> -->
+                  <span class="product-case"> {{ item.case }} </span>
+                  <span class="product-discount"
+                    >{{ item.discountPrice * 100 }}%</span
                   >
-                  <span class="real-price">${{ item.price.toFixed(2) }}</span>
+                  <button class="favorites">
+                    <i class="bi bi-suit-heart"></i>
+                  </button>
+                  <button class="details"><i class="bi bi-search"></i></button>
+                  <button class="add-to-cart">Add To Cart</button>
+                </div>
+                <div class="product-info">
+                  <div class="product-type">{{ item.type }}</div>
+                  <ul class="product-colors">
+                    <li>
+                      <a></a>
+                    </li>
+                    <li>
+                      <a></a>
+                    </li>
+                    <li>
+                      <a></a>
+                    </li>
+                    <li>
+                      <a></a>
+                    </li>
+                  </ul>
+                  <div class="product-name">{{ item.name }}</div>
+                  <div class="product-price">
+                    <span class="sale-price"
+                      >${{ (item.price * item.discountPrice).toFixed(2) }}</span
+                    >
+                    <span class="real-price">${{ item.price.toFixed(2) }}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="product-image">
+                  <!-- <img class="img-1" :src="item.imageLink" alt="..." /> -->
+                  <img class="img-2" :src="item.imageLink2" alt="..." />
+                  <span class="product-case"> {{ item.case }} </span>
+                  <span class="product-discount"
+                    >{{ item.discountPrice * 100 }}%</span
+                  >
+                  <button class="favorites">
+                    <i class="bi bi-suit-heart"></i>
+                  </button>
+                  <button class="details"><i class="bi bi-search"></i></button>
+                  <button class="add-to-cart">Add To Cart</button>
+                </div>
+                <div class="product-info">
+                  <div class="product-type">{{ item.type }}</div>
+                  <ul class="product-colors">
+                    <li>
+                      <a></a>
+                    </li>
+                    <li>
+                      <a></a>
+                    </li>
+                    <li>
+                      <a></a>
+                    </li>
+                    <li>
+                      <a></a>
+                    </li>
+                  </ul>
+                  <div class="product-name">{{ item.name }}</div>
+                  <div class="product-price">
+                    <span class="sale-price"
+                      >${{ (item.price * item.discountPrice).toFixed(2) }}</span
+                    >
+                    <span class="real-price">${{ item.price.toFixed(2) }}</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -78,7 +105,7 @@
 
 <script>
 export default {
-  name: "our-products",
+  name: "featured-products",
   props: {
     products: {
       type: Array,
@@ -141,8 +168,8 @@ $color-bg-search: #f7f7f7;
 $color-border-search: #ddd;
 $color-slide-button: #777777;
 
-.our-products {
-  height: 630px;
+.featured-products {
+  height: 975px;
   width: 100%;
   padding-top: 80px;
   margin-bottom: 80px;
@@ -205,8 +232,13 @@ $color-slide-button: #777777;
           display: flex;
           gap: 20px;
           transition: all 400ms ease;
-          .card {
+          .card-group {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
             min-width: calc(25% - 15px);
+            .card {
+
             display: flex;
             flex-direction: column;
             user-select: none;
@@ -400,6 +432,7 @@ $color-slide-button: #777777;
                 }
               }
             }
+          }
           }
         }
       }
