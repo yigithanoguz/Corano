@@ -100,7 +100,7 @@ export default {
   },
   mounted() {
     this.slide();
-    // this.animation();
+    this.animation();
   },
   watch: {
     item(value) {
@@ -110,7 +110,7 @@ export default {
       if (value === -1) {
         this.item = 2;
       }
-      // this.animation();
+      this.animation();
     },
   },
 };
@@ -198,8 +198,8 @@ $color-slide-button: #777777;
       color: $color-black;
       line-height: 60px;
       user-select: none;
-      animation-name: scroll-down;
-      animation-duration: 2s;
+      // animation-name: scroll-down;
+      // animation-duration: 2s;
 
     }
     .slider-info {

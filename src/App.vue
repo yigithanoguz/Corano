@@ -92,6 +92,8 @@ export default {
 <style lang="scss">
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap');
 
+$color-gold: #c29958;
+
 * {
   margin: 0;
   padding: 0;
@@ -108,6 +110,11 @@ export default {
 
 ul {
   list-style: none;
+}
+
+::selection {
+  background-color: $color-gold;
+  color: #fff;
 }
 
 // #nav {

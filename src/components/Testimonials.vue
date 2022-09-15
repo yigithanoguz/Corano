@@ -4,15 +4,24 @@
       <div class="title">Testimonials</div>
       <div class="sub-title">What they say</div>
       <div class="images">
-        <div class="img" v-for="(item, index) in testimonialsItems" :key="index" @click="itemIndex=index">
-          <img :src="item.image" alt="..." :class="{ scaled: itemIndex === index }">
+        <div
+          class="img"
+          v-for="(item, index) in testimonialsItems"
+          :key="index"
+          @click="itemIndex = index"
+        >
+          <img
+            :src="item.image"
+            alt="..."
+            :class="{ scaled: itemIndex === index }"
+          />
         </div>
       </div>
-      <p class="description"> {{ testimonialsItems[itemIndex].description }} </p>
+      <p class="description">{{ testimonialsItems[itemIndex].description }}</p>
       <div class="voting">
         <i class="bi bi-star" v-for="n in 5" :key="n"></i>
       </div>
-      <div class="name"> {{ testimonialsItems[itemIndex].name }} </div>
+      <div class="name">{{ testimonialsItems[itemIndex].name }}</div>
     </div>
   </div>
 </template>
@@ -53,18 +62,26 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
-
 .scaled {
   transform: scale(1.3);
+}
+
+@keyframes shine {
+  0% {
+    background-position: -500%;
+  }
+  100% {
+    background-position: 100%;
+  }
 }
 
 .testimonials {
   height: auto;
   width: 100%;
-  padding: 80px 0;
+  padding: 80px;
   background-image: url(https://htmldemo.net/corano/corano/assets/img/testimonial/testimonials-bg.jpg);
-  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   .container {
     margin: 0 auto;
     height: 100%;
@@ -75,6 +92,14 @@ export default {
     .title {
       font-size: 2rem;
       font-weight: 700;
+      color: #222222;
+      // background: linear-gradient(90deg, #c29958, #000, #c29958);
+      // background-size: 90%;
+      // animation: shine 3s linear infinite;
+      // background-clip: text;
+      // -webkit-text-fill-color: rgba(255, 255, 255, 0);
+      // -webkit-text-size-adjust: 100%;
+      // -webkit-tap-highlight-color: transparent;
     }
     .sub-title {
       margin-top: 10px;
@@ -102,6 +127,7 @@ export default {
       margin-top: 40px;
       display: flex;
       gap: 5px;
+      color: #f9bd22;
     }
     .name {
       margin-top: 10px;

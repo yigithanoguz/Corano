@@ -10,6 +10,7 @@
     <carousel />
     <featured-products :products="products" />
     <testimonials />
+    <other-products :products="products" />
   </div>
 </template>
 
@@ -24,6 +25,7 @@ import OurProducts from '@/components/OurProducts.vue'
 import Carousel from '@/components/Carousel.vue'
 import FeaturedProducts from '@/components/FeaturedProducts.vue'
 import Testimonials from '../components/Testimonials.vue'
+import OtherProducts from '../components/OtherProducts.vue'
 
 export default {
   name: 'Home',
@@ -37,6 +39,7 @@ export default {
     Carousel,
     FeaturedProducts,
     Testimonials,
+    OtherProducts,
   },
   props: {
     products: {
