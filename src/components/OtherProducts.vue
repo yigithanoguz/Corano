@@ -5,8 +5,8 @@
         <div class="top">
           <div class="title">New Arrivals</div>
           <div class="buttons">
-            <button class="btn-prev">
-              <i class="bi bi-chevron-left" @click="slideLeft"></i>
+            <button class="btn-prev" @click="slideLeft">
+              <i class="bi bi-chevron-left"></i>
             </button>
             <button class="btn-next" @click="slideRight">
               <i class="bi bi-chevron-right"></i>
@@ -14,12 +14,25 @@
           </div>
         </div>
         <div class="products-container">
-          <!-- overflow: hidden; -->
-          <div class="products-group">
-            <div class="product">
-              <img src="https://htmldemo.net/corano/corano/assets/img/product/product-1.jpg" alt="..." />
+          <div
+            class="products-group"
+            :style="{ left: `calc( ${left}px - ${columnIndex * 20}px )` }"
+          >
+            <div
+              class="product"
+              v-for="(item, index) in products"
+              :key="index"
+              :style="{
+                'grid-row-start': index % 4,
+                'grid-row-end': (index % 4) + 1,
+                'grid-column-start': Math.floor(index / 4) + 1,
+                'grid-column-end': Math.floor(index / 4) + 2,
+                width: (windowWidth * 0.75) / 3 - 40 + 'px',
+              }"
+            >
+              <img :src="item.imageLink" alt="..." />
               <div class="product-info">
-                <div class="name">Diamond Exclusive Ring</div>
+                <div class="name">{{ item.name }}</div>
                 <div class="product-price">
                   fiyat
                   <!-- <span class="sale-price"
@@ -47,9 +60,40 @@ export default {
     },
   },
   data() {
-    return {};
+    return {
+      windowWidth: window.innerWidth,
+      columnIndex: 0,
+      columnCount: Math.ceil(this.products.length / 4),
+      left: 0,
+    };
   },
-  methods: {},
+  methods: {
+    windowWidthControl() {
+      this.windowWidth = window.innerWidth;
+    },
+    slideLeft() {
+      if (this.columnIndex === 0) {
+        this.columnIndex = this.columnCount - 1;
+        this.left -=
+          ((this.windowWidth * 0.75) / 3 - 40) * (this.columnCount - 1);
+      } else {
+        this.columnIndex--;
+        this.left += (this.windowWidth * 0.75) / 3 - 40;
+      }
+    },
+    slideRight() {
+      if (this.columnIndex === this.columnCount - 1) {
+        this.columnIndex = 0;
+        this.left = 0;
+      } else {
+        this.columnIndex++;
+        this.left -= (this.windowWidth * 0.75) / 3 - 40;
+      }
+    },
+  },
+  mounted() {
+    window.addEventListener("resize", this.windowWidthControl);
+  },
 };
 </script>
 
@@ -72,13 +116,27 @@ $color-gold: #c29958;
         display: flex;
         justify-content: space-between;
         align-items: center;
+        position: relative;
+        overflow: hidden;
         .title {
           font-size: 1.2rem;
           font-weight: 700;
           color: #000;
+          &:after {
+            content: "";
+            height: 2px;
+            background-color: #efefef;
+            width: 100%;
+            position: absolute;
+            top: 50%;
+            z-index: 1;
+            margin-left: 5px;
+          }
         }
         .buttons {
           display: flex;
+          z-index: 2;
+          background-color: #fff;
           button {
             width: 40px;
             background-color: transparent;
@@ -93,7 +151,16 @@ $color-gold: #c29958;
         }
       }
       .products-container {
+        height: 450px;
+        position: relative;
+        // overflow: hidden;
         .products-group {
+          margin-top: 20px;
+          position: absolute;
+          display: grid;
+          column-gap: 20px;
+          transition: all 400ms ease;
+          top: 0;
           .product {
             padding: 10px 0;
             display: flex;
@@ -102,7 +169,6 @@ $color-gold: #c29958;
               width: 25%;
             }
             .product-info {
-
               .name {
                 margin-top: 5px;
                 transition: all 400ms ease;

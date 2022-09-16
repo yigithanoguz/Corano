@@ -617,7 +617,7 @@ $color-border-search: #ddd;
                 position: absolute;
                 top: 70px;
                 right: 0px;
-
+                z-index: 20;
                 &:hover {
                   i.bi {
                     color: $color-gold;

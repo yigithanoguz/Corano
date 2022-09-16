@@ -54,7 +54,7 @@ export default {
           imgLink:
             "https://htmldemo.net/corano/corano/assets/img/slider/home3-slide1.jpg",
           infoText: "New pearl earrings and more from $99",
-          animationName: "",
+          // animationName: "",
         },
         {
           id: 2,
@@ -62,7 +62,7 @@ export default {
           imgLink:
             "https://htmldemo.net/corano/corano/assets/img/slider/home3-slide2.jpg",
           infoText: "Shukra Yogam & Silver Power Silver Saving Schemes.",
-          animationName: "",
+          // animationName: "",
         },
         {
           id: 3,
@@ -70,7 +70,7 @@ export default {
           imgLink:
             "https://htmldemo.net/corano/corano/assets/img/slider/home3-slide3.jpg",
           infoText: "Designer Jewelry Necklaces-Bracelets-Earings",
-          animationName: "",
+          // animationName: "",
         },
       ],
     };
