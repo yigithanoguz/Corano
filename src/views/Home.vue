@@ -11,6 +11,8 @@
     <featured-products :products="products" />
     <testimonials />
     <other-products :products="products" />
+    <LatestBlogs />
+    <brand-slider />
   </div>
 </template>
 
@@ -26,6 +28,8 @@ import Carousel from '@/components/Carousel.vue'
 import FeaturedProducts from '@/components/FeaturedProducts.vue'
 import Testimonials from '../components/Testimonials.vue'
 import OtherProducts from '../components/OtherProducts.vue'
+import LatestBlogs from '../components/LatestBlogs.vue'
+import BrandSlider from '../components/BrandSlider.vue'
 
 export default {
   name: 'Home',
@@ -40,6 +44,8 @@ export default {
     FeaturedProducts,
     Testimonials,
     OtherProducts,
+    LatestBlogs,
+    BrandSlider,
   },
   props: {
     products: {
