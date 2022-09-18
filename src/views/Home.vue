@@ -13,6 +13,7 @@
     <other-products :products="products" />
     <LatestBlogs />
     <brand-slider />
+    <Footer />
   </div>
 </template>
 
@@ -30,6 +31,7 @@ import Testimonials from '../components/Testimonials.vue'
 import OtherProducts from '../components/OtherProducts.vue'
 import LatestBlogs from '../components/LatestBlogs.vue'
 import BrandSlider from '../components/BrandSlider.vue'
+import Footer from '../components/Footer.vue'
 
 export default {
   name: 'Home',
@@ -46,6 +48,7 @@ export default {
     OtherProducts,
     LatestBlogs,
     BrandSlider,
+    Footer,
   },
   props: {
     products: {

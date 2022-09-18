@@ -155,6 +155,11 @@ ul {
   list-style: none;
 }
 
+a {
+  text-decoration: none;
+  // color: red;
+}
+
 ::selection {
   background-color: $color-gold;
   color: #fff;
