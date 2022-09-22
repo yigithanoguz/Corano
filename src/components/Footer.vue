@@ -197,10 +197,11 @@ $color-gold: #c29958;
         flex-direction: column;
       }
       .be-subscribe {
-        width: 100%;
+        width: 50%;
         @media (max-width: 992px) {
-        flex-direction: column;
-      }
+          width: 100%;
+          flex-direction: column;
+        }
         .title {
           margin-bottom: 20px;
           font-size: 1rem;
@@ -243,8 +244,6 @@ $color-gold: #c29958;
         @media (max-width: 992px) {
           align-self: flex-start;
           margin-top: 20px;
-        }
-        img {
         }
       }
     }

@@ -3,10 +3,25 @@
     class="slider"
     :style="{ 'background-image': `url(${slider[item].imgLink})` }"
   >
-    <div class="container">
-      <div class="slider-title">{{ slider[item].title }}</div>
-      <div class="slider-info">{{ slider[item].infoText }}</div>
-      <button class="slider-btn">Read More</button>
+    <div class="container" v-for="(sliderItem, index) in slider" :key="index">
+      <div
+        class="slider-title animate__animated animate__heartBeat"
+        v-if="item === index"
+      >
+        {{ sliderItem.title }}
+      </div>
+      <div
+        class="slider-info animate__animated animate__bounceInLeft"
+        v-if="item === index"
+      >
+        {{ sliderItem.infoText }}
+      </div>
+      <button
+        class="slider-btn animate__animated animate__bounceInUp"
+        v-if="item === index"
+      >
+        Read More
+      </button>
     </div>
     <!-- <div class="slide-1">
       <div class="container">
@@ -81,26 +96,26 @@ export default {
         this.item++;
       }, 5000);
     },
-    animation() {
-      let margin = 200;
-      let opacity = 0;
-      let interval = setInterval(() => {
-        margin--;
-        opacity += 0.005;
-        document.querySelector('.slider-title').style.marginLeft = margin + 'px';
-        document.querySelector('.slider-title').style.opacity = opacity;
-        document.querySelector('.slider-info').style.marginLeft = 0 - margin + 'px';
-        document.querySelector('.slider-info').style.marginTop = margin + 'px';
-        document.querySelector('.slider-info').style.opacity = opacity;
-        if(margin === 0) {
-          clearInterval(interval);
-        }
-      }, 1);
-    },
+    // animation() {
+    //   let margin = 200;
+    //   let opacity = 0;
+    //   let interval = setInterval(() => {
+    //     margin--;
+    //     opacity += 0.005;
+    //     document.querySelector('.slider-title').style.marginLeft = margin + 'px';
+    //     document.querySelector('.slider-title').style.opacity = opacity;
+    //     document.querySelector('.slider-info').style.marginLeft = 0 - margin + 'px';
+    //     document.querySelector('.slider-info').style.marginTop = margin + 'px';
+    //     document.querySelector('.slider-info').style.opacity = opacity;
+    //     if(margin === 0) {
+    //       clearInterval(interval);
+    //     }
+    //   }, 1);
+    // },
   },
   mounted() {
     this.slide();
-    this.animation();
+    // this.animation();
   },
   watch: {
     item(value) {
@@ -110,7 +125,7 @@ export default {
       if (value === -1) {
         this.item = 2;
       }
-      this.animation();
+      // this.animation();
     },
   },
 };
@@ -150,6 +165,12 @@ $color-slide-button: #777777;
 
 .slider {
   height: 530px;
+  @media (max-width: 992px) {
+    height: 400px;
+  }
+  @media (max-width: 768px) {
+    filter: opacity(0.5);
+  }
   width: 100%;
   position: relative;
   display: flex;
@@ -158,6 +179,9 @@ $color-slide-button: #777777;
   transition: all 400ms;
   padding: 0px;
   background-size: cover;
+  background-position: center;
+  overflow: hidden;
+
   &:hover {
     padding: 0 20px;
     > button {
@@ -194,19 +218,27 @@ $color-slide-button: #777777;
     .slider-title {
       width: 50%;
       font-size: 3.7rem;
+      @media (max-width: 992px) {
+        font-size: 3rem;
+      }
+      @media (max-width: 768px) {
+        width: 80%;
+      }
       text-align: left;
       color: $color-black;
       line-height: 60px;
       user-select: none;
       // animation-name: scroll-down;
       // animation-duration: 2s;
-
     }
     .slider-info {
       font-size: 1.2rem;
       font-weight: 300;
       color: $color-black;
       user-select: none;
+      @media (max-width: 992px) {
+        font-size: 1rem;
+      }
     }
     button.slider-btn {
       height: 43px;

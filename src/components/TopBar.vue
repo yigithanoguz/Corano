@@ -111,6 +111,9 @@ $color-border: #efefef;
   color: $color-text;
   font-size: 0.875rem;
   border: $color-border solid 1px;
+  @media (max-width: 992px) {
+    display: none;
+  }
   .container {
     height: 100%;
     width: 75%;
@@ -141,38 +144,43 @@ $color-border: #efefef;
             font-size: 0.7rem;
           }
           ul {
-            display: none;
+            // display: none;
+            opacity: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 15px;
             height: auto;
             width: 150px;
             padding: 30px 20px;
             position: absolute;
             top: 35px;
             right: 0;
-            opacity: 1;
             font-size: 0.8rem;
-            animation-name: slide;
-            animation-duration: 500ms;
+            margin-top: 50px;
+            transition: all 500ms ease;
+            // animation-name: slide;
+            // animation-duration: 500ms;
             background-color: $color-white;
             color: $color-text;
             border: solid 1px $color-border;
-            z-index: 10;
+            z-index: -10;
           }
           &:hover {
             ul {
-              display: flex;
-              flex-direction: column;
-              align-items: flex-start;
-              gap: 15px;
-              @keyframes slide {
-                from {
-                  top: 85px;
-                  opacity: 0;
-                }
-                to {
-                  top: 35px;
-                  opacity: 1;
-                }
-              }
+              opacity: 1;
+              margin-top: 0px;
+              z-index: 10;
+              // @keyframes slide {
+              //   from {
+              //     top: 85px;
+              //     opacity: 0;
+              //   }
+              //   to {
+              //     top: 35px;
+              //     opacity: 1;
+              //   }
+              // }
               li {
                 transition: color 300ms;
                 &:hover {

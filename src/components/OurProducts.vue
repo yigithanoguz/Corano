@@ -22,7 +22,6 @@
           <div
             class="cards"
             :style="{ left: `calc(${left}% - ${cardIndex * 5}px)` }"
-            @mousedown="test"
           >
             <div class="card" v-for="(item, index) in products" :key="index">
               <div class="product-image">
@@ -36,7 +35,9 @@
                   <i class="bi bi-suit-heart"></i>
                 </button>
                 <button class="details"><i class="bi bi-search"></i></button>
-                <button class="add-to-cart">Add To Cart</button>
+                <button class="add-to-cart" @click="addToCart(index)">
+                  Add To Cart
+                </button>
               </div>
               <div class="product-info">
                 <div class="product-type">{{ item.type }}</div>
@@ -86,6 +87,8 @@ export default {
   },
   data() {
     return {
+      windowWidth: window.innerWidth,
+      productIndex: null,
       cardCountOnScreen: 4,
       cardIndex: 0,
       itemCountOnArray: this.products.length,
@@ -94,30 +97,52 @@ export default {
     };
   },
   methods: {
-    test(e) {
-      this.cursorX = e.clientX;
-      console.log(this.cursorX);
+    // test(e) {
+    //   this.cursorX = e.clientX;
+    //   console.log(this.cursorX);
+    // },
+    windowWidthControl() {
+      this.windowWidth = window.innerWidth;
+      if (this.windowWidth < 768) {
+        this.cardCountOnScreen = 2;
+      }
+      else if (this.windowWidth < 992) {
+        this.cardCountOnScreen = 3;
+      } else {
+        this.cardCountOnScreen = 4;
+      }
+    },
+    addToCart(value) {
+      // console.log(value + 'aaaa');
+      this.productIndex = value;
+      this.$emit("addToCart", this.productIndex);
+      this.$emit("data", true);
     },
     slideLeft() {
       if (this.cardIndex === 0) {
-        this.cardIndex = this.itemCountOnArray - this.cardCountOnScreen;
-        this.left -= 25 * this.cardIndex;
+        this.cardIndex = this.itemCountOnArray - this.cardCountOnScreen - 1;
+        this.left -= (100 / this.cardCountOnScreen) * this.cardIndex;
       } else {
         this.cardIndex--;
-        this.left += 25;
+        this.left += 100 / this.cardCountOnScreen;
       }
     },
     slideRight() {
-      if (this.itemCountOnArray - this.cardCountOnScreen === this.cardIndex) {
+      if (
+        this.itemCountOnArray - this.cardCountOnScreen - 1 ===
+        this.cardIndex
+      ) {
         this.cardIndex = 0;
         this.left = 0;
       } else {
         this.cardIndex++;
-        this.left -= 25;
+        this.left -= 100 / this.cardCountOnScreen;
       }
     },
   },
   mounted() {
+    this.windowWidthControl();
+    window.addEventListener("resize", this.windowWidthControl);
     setInterval(() => {
       this.slideRight();
     }, 5000);
@@ -207,6 +232,12 @@ $color-slide-button: #777777;
           transition: all 400ms ease;
           .card {
             min-width: calc(25% - 15px);
+            @media (max-width: 992px) {
+              min-width: calc(33.33333% - 15px);
+            }
+            @media (max-width: 768px) {
+              min-width: calc(50% - 15px);
+            }
             display: flex;
             flex-direction: column;
             user-select: none;

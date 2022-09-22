@@ -1,5 +1,5 @@
 <template>
-  <div class="header">
+  <div class="header" :class="{ 'position-sticky': distanceY > 400 }">
     <div class="container">
       <div class="left">
         <div class="logo">
@@ -204,7 +204,12 @@
               </a>
             </li>
             <li>
-              <a><i class="bi bi-bag"></i> <span class="count">2</span></a>
+              <a @click="onCart"
+                ><i class="bi bi-bag"></i>
+                <span class="count" v-if="productCount > 0">
+                  {{ productCount }}
+                </span>
+              </a>
             </li>
           </ul>
         </div>
@@ -220,12 +225,30 @@ export default {
     return {
       searchInput: false,
       searchInputText: "",
+      showCart: false,
+      distanceY: null,
     };
+  },
+  props: {
+    productCount: {
+      type: Number,
+    },
   },
   methods: {
     searchInputShow() {
       this.searchInput = !this.searchInput;
     },
+    onCart() {
+      this.showCart = true;
+      this.$emit("onCart", this.showCart);
+    },
+    handleScroll() {
+      this.distanceY = window.pageYOffset;
+      // console.log(this.distanceY)
+    },
+  },
+  created() {
+    window.addEventListener("scroll", this.handleScroll);
   },
 };
 </script>
@@ -245,6 +268,9 @@ $color-border-search: #ddd;
   z-index: 5;
   background-color: $color-white;
   border-bottom: solid 1px $color-border;
+  @media (max-width: 992px) {
+    display: none; // geçici
+  }
   &.position-sticky {
     position: sticky;
     height: 65px;
@@ -252,6 +278,9 @@ $color-border-search: #ddd;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     ul {
       top: 64px !important;
+      .shop__ul-ul {
+        top: 0px !important;
+      }
     }
   }
   .container {

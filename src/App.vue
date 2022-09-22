@@ -7,133 +7,208 @@
 
     <router-view
       :products="products"
-     />
+      @addToCart="productIndex = $event"
+      @data="data = $event"
+      :cart="cart"
+      :totalPrice="totalPrice"
+    />
   </div>
 </template>
 
 <script>
 export default {
-  name: 'app',
+  name: "app",
   data() {
     return {
+      productIndex: null,
+      data: false,
+      isNew: false,
+      cart: [],
+      totalPrice: null,
       products: [
         {
           id: 1,
-          name: 'Perfect Diamond Jewelry',
-          type: 'Diamond',
-          imageLink: 'https://htmldemo.net/corano/corano/assets/img/product/product-1.jpg',
-          imageLink2: 'https://htmldemo.net/corano/corano/assets/img/product/product-11.jpg',
-          currency: '$',
+          name: "Perfect Diamond Jewelry",
+          type: "Diamond",
+          imageLink:
+            "https://htmldemo.net/corano/corano/assets/img/product/product-1.jpg",
+          imageLink2:
+            "https://htmldemo.net/corano/corano/assets/img/product/product-11.jpg",
+          currency: "$",
           price: 99,
-          discountPrice: 0.50,
-          case: 'New',
+          discountPrice: 0.5,
+          case: "New",
         },
         {
           id: 2,
-          name: 'Perfect Diamond Jewelry',
-          type: 'Diamond',
-          imageLink: 'https://htmldemo.net/corano/corano/assets/img/product/product-2.jpg',
-          imageLink2: 'https://htmldemo.net/corano/corano/assets/img/product/product-12.jpg',
-          currency: '$',
+          name: "Perfect Diamond Jewelry",
+          type: "Diamond",
+          imageLink:
+            "https://htmldemo.net/corano/corano/assets/img/product/product-2.jpg",
+          imageLink2:
+            "https://htmldemo.net/corano/corano/assets/img/product/product-12.jpg",
+          currency: "$",
           price: 99,
-          discountPrice: 0.50,
-          case: 'New',
+          discountPrice: 0.5,
+          case: "New",
         },
         {
           id: 3,
-          name: 'Perfect Diamond Jewelry',
-          type: 'Diamond',
-          imageLink: 'https://htmldemo.net/corano/corano/assets/img/product/product-3.jpg',
-          imageLink2: 'https://htmldemo.net/corano/corano/assets/img/product/product-13.jpg',
-          currency: '$',
+          name: "Perfect Diamond Jewelry",
+          type: "Diamond",
+          imageLink:
+            "https://htmldemo.net/corano/corano/assets/img/product/product-3.jpg",
+          imageLink2:
+            "https://htmldemo.net/corano/corano/assets/img/product/product-13.jpg",
+          currency: "$",
           price: 99,
-          discountPrice: 0.50,
-          case: 'New',
+          discountPrice: 0.5,
+          case: "New",
         },
         {
           id: 4,
-          name: 'Perfect Diamond Jewelry',
-          type: 'Diamond',
-          imageLink: 'https://htmldemo.net/corano/corano/assets/img/product/product-4.jpg',
-          imageLink2: 'https://htmldemo.net/corano/corano/assets/img/product/product-14.jpg',
-          currency: '$',
+          name: "Perfect Diamond Jewelry",
+          type: "Diamond",
+          imageLink:
+            "https://htmldemo.net/corano/corano/assets/img/product/product-4.jpg",
+          imageLink2:
+            "https://htmldemo.net/corano/corano/assets/img/product/product-14.jpg",
+          currency: "$",
           price: 99,
-          discountPrice: 0.50,
-          case: 'New',
+          discountPrice: 0.5,
+          case: "New",
         },
         {
           id: 5,
-          name: 'Perfect Diamond Jewelry',
-          type: 'Diamond',
-          imageLink: 'https://htmldemo.net/corano/corano/assets/img/product/product-5.jpg',
-          imageLink2: 'https://htmldemo.net/corano/corano/assets/img/product/product-15.jpg',
-          currency: '$',
+          name: "Perfect Diamond Jewelry",
+          type: "Diamond",
+          imageLink:
+            "https://htmldemo.net/corano/corano/assets/img/product/product-5.jpg",
+          imageLink2:
+            "https://htmldemo.net/corano/corano/assets/img/product/product-15.jpg",
+          currency: "$",
           price: 99,
-          discountPrice: 0.50,
-          case: 'New',
+          discountPrice: 0.5,
+          case: "New",
         },
         {
           id: 6,
-          name: 'Perfect Diamond Jewelry',
-          type: 'Diamond',
-          imageLink: 'https://htmldemo.net/corano/corano/assets/img/product/product-6.jpg',
-          imageLink2: 'https://htmldemo.net/corano/corano/assets/img/product/product-16.jpg',
-          currency: '$',
+          name: "Perfect Diamond Jewelry",
+          type: "Diamond",
+          imageLink:
+            "https://htmldemo.net/corano/corano/assets/img/product/product-6.jpg",
+          imageLink2:
+            "https://htmldemo.net/corano/corano/assets/img/product/product-16.jpg",
+          currency: "$",
           price: 99,
-          discountPrice: 0.50,
-          case: 'New',
-        },{
-          id: 5,
-          name: 'Perfect Diamond Jewelry',
-          type: 'Diamond',
-          imageLink: 'https://htmldemo.net/corano/corano/assets/img/product/product-5.jpg',
-          imageLink2: 'https://htmldemo.net/corano/corano/assets/img/product/product-15.jpg',
-          currency: '$',
-          price: 99,
-          discountPrice: 0.50,
-          case: 'New',
-        },
-        {
-          id: 6,
-          name: 'Perfect Diamond Jewelry',
-          type: 'Diamond',
-          imageLink: 'https://htmldemo.net/corano/corano/assets/img/product/product-6.jpg',
-          imageLink2: 'https://htmldemo.net/corano/corano/assets/img/product/product-16.jpg',
-          currency: '$',
-          price: 99,
-          discountPrice: 0.50,
-          case: 'New',
+          discountPrice: 0.5,
+          case: "New",
         },
         {
           id: 5,
-          name: 'Perfect Diamond Jewelry',
-          type: 'Diamond',
-          imageLink: 'https://htmldemo.net/corano/corano/assets/img/product/product-5.jpg',
-          imageLink2: 'https://htmldemo.net/corano/corano/assets/img/product/product-15.jpg',
-          currency: '$',
+          name: "Perfect Diamond Jewelry",
+          type: "Diamond",
+          imageLink:
+            "https://htmldemo.net/corano/corano/assets/img/product/product-5.jpg",
+          imageLink2:
+            "https://htmldemo.net/corano/corano/assets/img/product/product-15.jpg",
+          currency: "$",
           price: 99,
-          discountPrice: 0.50,
-          case: 'New',
+          discountPrice: 0.5,
+          case: "New",
         },
         {
           id: 6,
-          name: 'Perfect Diamond Jewelry',
-          type: 'Diamond',
-          imageLink: 'https://htmldemo.net/corano/corano/assets/img/product/product-6.jpg',
-          imageLink2: 'https://htmldemo.net/corano/corano/assets/img/product/product-16.jpg',
-          currency: '$',
+          name: "Perfect Diamond Jewelry",
+          type: "Diamond",
+          imageLink:
+            "https://htmldemo.net/corano/corano/assets/img/product/product-6.jpg",
+          imageLink2:
+            "https://htmldemo.net/corano/corano/assets/img/product/product-16.jpg",
+          currency: "$",
           price: 99,
-          discountPrice: 0.50,
-          case: 'New',
-        }
-      ]
-    }
+          discountPrice: 0.5,
+          case: "New",
+        },
+        {
+          id: 5,
+          name: "Perfect Diamond Jewelry",
+          type: "Diamond",
+          imageLink:
+            "https://htmldemo.net/corano/corano/assets/img/product/product-5.jpg",
+          imageLink2:
+            "https://htmldemo.net/corano/corano/assets/img/product/product-15.jpg",
+          currency: "$",
+          price: 99,
+          discountPrice: 0.5,
+          case: "New",
+        },
+        {
+          id: 6,
+          name: "Perfect Diamond Jewelry",
+          type: "Diamond",
+          imageLink:
+            "https://htmldemo.net/corano/corano/assets/img/product/product-6.jpg",
+          imageLink2:
+            "https://htmldemo.net/corano/corano/assets/img/product/product-16.jpg",
+          currency: "$",
+          price: 99,
+          discountPrice: 0.5,
+          case: "New",
+        },
+      ],
+    };
   },
-}
+  methods: {
+    addToCart() {
+      // this.cart.push(this.products[this.productIndex]);
+
+      if (this.cart.length === 0) {
+        this.cart.push(this.products[this.productIndex]);
+        this.cart[0]["count"] = 1;
+        // console.log("ilk eleman eklendi")
+      } else {
+        // console.log("2 veya sonraki eleman")
+        for (let i in this.cart) {
+          if (this.cart[i] === this.products[this.productIndex]) {
+            this.cart[i]["count"]++;
+            // console.log('ürünün aynısı sepette var sayısı arttı yeni sayı: ' + this.cart[i]["count"])
+            this.isNew = false;
+            break;
+          } else {
+            this.isNew = true;
+            // console.log('ürün sepette bulunamadı')
+          }
+        }
+        if (this.isNew) {
+          // console.log('ürün sepette bulunamadığı için sepetin sonuna eklendi')
+          this.cart.push(this.products[this.productIndex]);
+          this.cart[this.cart.length - 1]["count"] = 1;
+          this.isNew = false;
+        }
+      }
+
+      // console.log('reduce')
+      this.totalPrice = 0;
+      for (let i of this.cart) {
+        this.totalPrice += i.price * i.discountPrice * i["count"];
+      }
+    },
+  },
+  watch: {
+    data() {
+      if (this.data === true) {
+        this.data = false;
+        this.addToCart();
+        // console.log("pi: " + this.productIndex);
+      }
+    },
+  },
+};
 </script>
 
 <style lang="scss">
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap");
 
 $color-gold: #c29958;
 
@@ -144,7 +219,7 @@ $color-gold: #c29958;
 }
 #app {
   // font-family: Avenir, Helvetica, Arial, sans-serif;
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
