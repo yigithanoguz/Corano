@@ -191,8 +191,13 @@
               <a
                 ><i class="bi bi-person-circle"></i>
                 <ul>
-                  <li><a>Login</a></li>
-                  <li><a>Register</a></li>
+                  <router-link tag="li" to="/login">
+                    <a>Login</a>
+                  </router-link>
+                  <!-- <li><a>Login</a></li> -->
+                  <router-link tag="li" to="/register">
+                    <a>Register</a>
+                  </router-link>
                   <li><a>My Account</a></li>
                 </ul>
               </a>
@@ -268,9 +273,7 @@ $color-border-search: #ddd;
   z-index: 5;
   background-color: $color-white;
   border-bottom: solid 1px $color-border;
-  @media (max-width: 992px) {
-    display: none; // geçici
-  }
+
   &.position-sticky {
     position: sticky;
     height: 65px;
@@ -304,6 +307,9 @@ $color-border-search: #ddd;
         }
       }
       .link {
+        @media (max-width: 992px) {
+          display: none; // geçici
+        }
         height: 100%;
         font-size: 0.95rem;
         z-index: 3;
@@ -713,7 +719,13 @@ $color-border-search: #ddd;
                     transition: color 300ms;
                     cursor: pointer;
                     &:hover {
-                      color: $color-gold;
+                      a {
+                        color: $color-gold;
+                      }
+                    }
+                    a {
+                      transition: color 300ms;
+                      color: #000;
                     }
                   }
                 }

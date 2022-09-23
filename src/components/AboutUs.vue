@@ -34,8 +34,8 @@
   width: 100%;
   margin-top: 80px;
   @media (max-width: 1200px) {
-      height: auto;
-    }
+    height: auto;
+  }
   .container {
     height: 100%;
     width: 75%;
@@ -55,6 +55,10 @@
     img {
       // width: 100%;
       height: 100%;
+      @media (max-width: 576px) {
+        height: auto;
+        width: 100%;
+      }
     }
     .content {
       display: flex;
