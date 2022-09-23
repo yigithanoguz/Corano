@@ -25,7 +25,7 @@
             'grid-row-end': (index % 4) + 1,
             'grid-column-start': Math.floor(index / 4) + 1,
             'grid-column-end': Math.floor(index / 4) + 2,
-            width: (windowWidth * 0.75) / 3 - 40 + 'px',
+            width: (windowWidth * 0.75) / cardCountOnScreen - gap + 'px',
           }"
         >
           <img :src="item.imageLink" alt="..." />
@@ -55,6 +55,8 @@ export default {
   data() {
     return {
       windowWidth: window.innerWidth,
+      cardCountOnScreen: 3,
+      gap: 40,
       columnIndex: 0,
       columnCount: Math.ceil(this.products.length / 4),
       left: 0,
@@ -63,15 +65,25 @@ export default {
   methods: {
     windowWidthControl() {
       this.windowWidth = window.innerWidth;
+      this.gap = 40;
+      if (this.windowWidth < 1200) {
+        this.cardCountOnScreen = 1;
+        this.gap = 20;
+      } else {
+        this.cardCountOnScreen = 3;
+        this.gap = 40;
+      }
     },
     slideLeft() {
       if (this.columnIndex === 0) {
         this.columnIndex = this.columnCount - 1;
         this.left -=
-          ((this.windowWidth * 0.75) / 3 - 40) * (this.columnCount - 1);
+          ((this.windowWidth * 0.75) / this.cardCountOnScreen - this.gap) *
+          (this.columnCount - 1);
       } else {
         this.columnIndex--;
-        this.left += (this.windowWidth * 0.75) / 3 - 40;
+        this.left +=
+          (this.windowWidth * 0.75) / this.cardCountOnScreen - this.gap;
       }
     },
     slideRight() {
@@ -80,11 +92,12 @@ export default {
         this.left = 0;
       } else {
         this.columnIndex++;
-        this.left -= (this.windowWidth * 0.75) / 3 - 40;
+        this.left -= (this.windowWidth * 0.75) / this.cardCountOnScreen - this.gap;
       }
     },
   },
   mounted() {
+    this.windowWidthControl();
     window.addEventListener("resize", this.windowWidthControl);
   },
 };
@@ -136,6 +149,21 @@ $color-gold: #c29958;
   }
   .products-container {
     height: 450px;
+    @media (max-width: 1200px) {
+      height: 1000px;
+    }
+    @media (max-width: 992px) {
+      height: 800px;
+    }
+    @media (max-width: 768px) {
+      height: 650px;
+    }
+    @media (max-width: 576px) {
+      height: 500px;
+    }
+    @media (max-width: 444px) {
+      height: 450px;
+    }
     position: relative;
     overflow: hidden;
     .products-group {

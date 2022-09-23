@@ -13,20 +13,17 @@
         <div class="blog-group" :style="{ left: `calc(${left}px` }">
           <div
             class="blog-post"
-            :style="{ minWidth: (windowWidth * 0.75) / 3 - 20 + 'px' }"
+            :style="{
+              minWidth: (windowWidth * 0.75) / cardCountOnScreen - 20 + 'px',
+            }"
             v-for="(item, index) in blogs"
             :key="index"
           >
             <div class="image">
-              <img
-                :src="item.img"
-                alt="..."
-              />
+              <img :src="item.img" alt="..." />
             </div>
             <div class="blog-date">{{ item.date }} | <a>Corano</a></div>
-            <div class="blog-title">
-              {{ index }}{{ item.title }}
-            </div>
+            <div class="blog-title">{{ index }}{{ item.title }}</div>
           </div>
         </div>
       </div>
@@ -93,14 +90,22 @@ export default {
   methods: {
     windowWidthControl() {
       this.windowWidth = window.innerWidth;
+      if (this.windowWidth < 768) {
+        this.cardCountOnScreen = 1;
+      } else if (this.windowWidth < 992) {
+        this.cardCountOnScreen = 2;
+      } else {
+        this.cardCountOnScreen = 3;
+      }
     },
     slideLeft() {
       if (this.cardIndex === 0) {
         this.cardIndex = this.blogs.length - this.cardCountOnScreen;
-        this.left -= ((this.windowWidth * 0.75) / 3) * this.cardIndex;
+        this.left -=
+          ((this.windowWidth * 0.75) / this.cardCountOnScreen) * this.cardIndex;
       } else {
         this.cardIndex--;
-        this.left += (this.windowWidth * 0.75) / 3;
+        this.left += (this.windowWidth * 0.75) / this.cardCountOnScreen;
       }
     },
     slideRight() {
@@ -109,11 +114,12 @@ export default {
         this.left = 0;
       } else {
         this.cardIndex++;
-        this.left -= (this.windowWidth * 0.75) / 3;
+        this.left -= (this.windowWidth * 0.75) / this.cardCountOnScreen;
       }
     },
   },
   mounted() {
+    this.windowWidthControl();
     window.addEventListener("resize", this.windowWidthControl);
   },
 };
@@ -159,6 +165,15 @@ $color-slide-button: #777777;
     }
     .blogs-container {
       height: 350px;
+      @media (max-width: 768px) {
+        height: 500px;
+      }
+      @media (max-width: 576px) {
+        height: 400px;
+      }
+      @media (max-width: 444px) {
+        height: 350px;
+      }
       margin-top: 40px;
       position: relative;
       overflow: hidden;

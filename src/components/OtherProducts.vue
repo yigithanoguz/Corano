@@ -9,14 +9,11 @@
 </template>
 
 <script>
-
-import NewArrivals from '@/components/NewArrivals.vue'
-import BestSellerProduct from '@/components/BestSellerProduct.vue'
-import OnSaleProduct from '@/components/OnSaleProduct.vue'
-
+import NewArrivals from "@/components/NewArrivals.vue";
+import BestSellerProduct from "@/components/BestSellerProduct.vue";
+import OnSaleProduct from "@/components/OnSaleProduct.vue";
 
 export default {
-
   name: "other-products",
   components: {
     NewArrivals,
@@ -28,7 +25,6 @@ export default {
       type: Array,
     },
   },
-
 };
 </script>
 
@@ -44,7 +40,9 @@ $color-gold: #c29958;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 50px;
-
+    @media (max-width: 1200px) {
+      grid-template-columns: 1fr;
+    }
   }
 }
 </style>

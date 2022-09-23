@@ -21,6 +21,7 @@ export default {
   name: "carousel",
   data() {
     return {
+      windowWidth: window.innerWidth,
       cardCountOnScreen: 4,
       cardIndex: 0,
       // itemCountOnArray: this.carouselItems.length,
@@ -50,13 +51,23 @@ export default {
     };
   },
   methods: {
+    windowWidthControl() {
+      this.windowWidth = window.innerWidth;
+      if (this.windowWidth < 768) {
+        this.cardCountOnScreen = 2;
+      } else if (this.windowWidth < 992) {
+        this.cardCountOnScreen = 3;
+      } else {
+        this.cardCountOnScreen = 4;
+      }
+    },
     slideLeft() {
       if (this.cardIndex === 0) {
         this.cardIndex = this.carouselItems.length - this.cardCountOnScreen;
-        this.left -= 25 * this.cardIndex;
+        this.left -= (100 / this.cardCountOnScreen) * this.cardIndex;
       } else {
         this.cardIndex--;
-        this.left += 25;
+        this.left += 100 / this.cardCountOnScreen;
       }
     },
     slideRight() {
@@ -68,11 +79,13 @@ export default {
         this.left = 0;
       } else {
         this.cardIndex++;
-        this.left -= 25;
+        this.left -= 100 / this.cardCountOnScreen;
       }
     },
   },
   mounted() {
+    this.windowWidthControl();
+    window.addEventListener("resize", this.windowWidthControl);
     setInterval(() => {
       this.slideRight();
     }, 5000);
@@ -91,6 +104,9 @@ export default {
   .carousel-item {
     height: 100%;
     min-width: calc(25% - 15px);
+    @media (max-width: 992px) {
+      min-width: calc(33.33333% - 15px);
+    }
     position: relative;
     transition: all 400ms ease;
     cursor: pointer;

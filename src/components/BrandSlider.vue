@@ -6,7 +6,9 @@
           class="brand"
           v-for="(item, index) in logos"
           :key="index"
-          :style="{ width: (windowWidth * 0.75) / cardCountOnScreen - 10 + 'px' }"
+          :style="{
+            width: (windowWidth * 0.75) / cardCountOnScreen - 10 + 'px',
+          }"
         >
           <img :src="item" alt="" />
         </div>
@@ -51,7 +53,8 @@ export default {
     slideLeft() {
       if (this.cardIndex === 0) {
         this.cardIndex = this.logos.length - this.cardCountOnScreen;
-        this.left -= ((this.windowWidth * 0.75) / this.cardCountOnScreen) * this.cardIndex;
+        this.left -=
+          ((this.windowWidth * 0.75) / this.cardCountOnScreen) * this.cardIndex;
       } else {
         this.cardIndex--;
         this.left += (this.windowWidth * 0.75) / this.cardCountOnScreen;
@@ -78,13 +81,16 @@ $color-gold: #c29958;
 
 .brand-slider {
   width: 100%;
+  @media (max-width: 992px) {
+    display: none;
+  }
   margin-bottom: 100px;
   position: relative;
   &:hover {
     button {
       opacity: 1;
       &.btn-prev {
-        left: 70px
+        left: 70px;
       }
       &.btn-next {
         right: 70px;

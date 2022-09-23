@@ -102,6 +102,9 @@ $color-gold: #c29958;
         grid-template-columns: repeat(2, 1fr);
         margin-bottom: 40px;
       }
+      @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+      }
       .description {
         .logo {
           margin-bottom: 20px;
@@ -241,6 +244,9 @@ $color-gold: #c29958;
       }
       .payment {
         align-self: flex-end;
+        // img {
+        //   width: 100%;
+        // }
         @media (max-width: 992px) {
           align-self: flex-start;
           margin-top: 20px;
