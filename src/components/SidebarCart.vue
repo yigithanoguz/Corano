@@ -26,16 +26,16 @@
                 ${{ (item.price * item.discountPrice).toFixed(2) }}
               </div>
             </div>
-            <button class="remove-button" @click="removeItem(index)"><i class="bi bi-x-lg"></i></button>
+            <button class="remove-button" @click="removeItem(index)">
+              <i class="bi bi-x-lg"></i>
+            </button>
           </div>
         </div>
         <div class="price-info">
-          <div class="total-price" v-if="totalPrice !== null">
-            Total: ${{ totalPrice.toFixed(2) }}
-          </div>
-          <div class="total-price" v-else>
+          <div class="total-price" v-if="cart.length === 0">
             Sepetinizde ürün bulunmamaktadır.
           </div>
+          <div class="total-price" v-else>Total: ${{ total.toFixed(2) }}</div>
         </div>
       </div>
     </transition>
@@ -49,6 +49,7 @@ export default {
     return {
       isActive: false,
       isHover: false,
+      total: this.totalPrice,
     };
   },
   props: {
@@ -72,8 +73,12 @@ export default {
       this.isActive = false;
     },
     removeItem(index) {
-      this.cart.splice(index, 1)
-    }
+      this.total -=
+        this.cart[index].price *
+        this.cart[index].discountPrice *
+        this.cart[index].count;
+      this.cart.splice(index, 1);
+    },
   },
   watch: {
     showCart(value) {
@@ -90,6 +95,9 @@ export default {
       if (value === false) {
         this.$emit("hideCart", value);
       }
+    },
+    totalPrice(value) {
+      this.total = value;
     },
   },
 };
@@ -215,7 +223,7 @@ $color-gold: #c29958;
           right: 5px;
           font-size: 1rem;
           cursor: pointer;
-          transition: all 400ms ease;;
+          transition: all 400ms ease;
           &:hover {
             color: $color-gold;
           }

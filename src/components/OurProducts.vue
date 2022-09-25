@@ -23,10 +23,21 @@
             class="cards"
             :style="{ left: `calc(${left}% - ${cardIndex * 5}px)` }"
           >
-            <div class="card" v-for="(item, index) in products" :key="index">
+            <div
+              class="card"
+              v-for="(item, index) in products"
+              :key="index"
+              @mouseover="hoverItem = index"
+              @mouseleave="hoverItem = null"
+            >
               <div class="product-image">
-                <img class="img-1" :src="item.imageLink" alt="..." />
-                <!-- <img class="img-2" :src="item.imageLink2" alt="..." /> -->
+                <img
+                  class="img-1"
+                  v-if="hoverItem !== index"
+                  :src="item.imageLink"
+                  alt="..."
+                />
+                <img class="img-2" v-else :src="item.imageLink2" alt="..." />
                 <span class="product-case"> {{ item.case }} </span>
                 <span class="product-discount"
                   >{{ item.discountPrice * 100 }}%</span
@@ -87,6 +98,7 @@ export default {
   },
   data() {
     return {
+      hoverItem: null,
       windowWidth: window.innerWidth,
       productIndex: null,
       cardCountOnScreen: 4,
@@ -105,8 +117,7 @@ export default {
       this.windowWidth = window.innerWidth;
       if (this.windowWidth < 768) {
         this.cardCountOnScreen = 2;
-      }
-      else if (this.windowWidth < 992) {
+      } else if (this.windowWidth < 992) {
         this.cardCountOnScreen = 3;
       } else {
         this.cardCountOnScreen = 4;

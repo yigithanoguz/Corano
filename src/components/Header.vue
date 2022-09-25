@@ -11,23 +11,8 @@
               <a class="selected"
                 >Home <i class="bi bi-chevron-down"></i>
                 <ul class="home__ul">
-                  <li>
-                    <a>Home Version 01</a>
-                  </li>
-                  <li>
-                    <a>Home Version 02</a>
-                  </li>
-                  <li>
-                    <a>Home Version 03</a>
-                  </li>
-                  <li>
-                    <a>Home Version 04</a>
-                  </li>
-                  <li>
-                    <a>Home Version 05</a>
-                  </li>
-                  <li>
-                    <a>Home Version 06</a>
+                  <li v-for="n in 6" :key="n">
+                    <a>Home Version 0{{ n }}</a>
                   </li>
                 </ul>
               </a>
@@ -37,40 +22,12 @@
                 >Pages <i class="bi bi-chevron-down"></i>
                 <ul class="pages__ul">
                   <div class="columns">
-                    <li>
-                      <span class="title">Column 01</span>
+                    <li v-for="n in 4" :key="n">
+                      <span class="title">Column 0{{ n }}</span>
                       <ul>
-                        <li><a>Shop Grid Left Sidebar</a></li>
-                        <li><a>Shop Grid Right Sidebar</a></li>
-                        <li><a>Shop List Left Sidebar</a></li>
-                        <li><a>Shop List Right Sidebar</a></li>
-                      </ul>
-                    </li>
-                    <li>
-                      <span class="title">Column 02</span>
-                      <ul>
-                        <li><a>Shop Grid Left Sidebar</a></li>
-                        <li><a>Shop Grid Right Sidebar</a></li>
-                        <li><a>Shop List Left Sidebar</a></li>
-                        <li><a>Shop List Right Sidebar</a></li>
-                      </ul>
-                    </li>
-                    <li>
-                      <span class="title">Column 03</span>
-                      <ul>
-                        <li><a>Shop Grid Left Sidebar</a></li>
-                        <li><a>Shop Grid Right Sidebar</a></li>
-                        <li><a>Shop List Left Sidebar</a></li>
-                        <li><a>Shop List Right Sidebar</a></li>
-                      </ul>
-                    </li>
-                    <li>
-                      <span class="title">Column 04</span>
-                      <ul>
-                        <li><a>Shop Grid Left Sidebar</a></li>
-                        <li><a>Shop Grid Right Sidebar</a></li>
-                        <li><a>Shop List Left Sidebar</a></li>
-                        <li><a>Shop List Right Sidebar</a></li>
+                        <li v-for="n in 4" :key="n">
+                          <a>Shop Grid Left Sidebar</a>
+                        </li>
                       </ul>
                     </li>
                   </div>
@@ -95,13 +52,7 @@
                     <a>Shop Layout</a>
                     <i class="bi bi-chevron-right"></i>
                     <ul class="shop__ul-ul">
-                      <li>
-                        <a>Shop Grid Sidebar</a>
-                      </li>
-                      <li>
-                        <a>Shop Grid Sidebar</a>
-                      </li>
-                      <li>
+                      <li v-for="n in 3" :key="n">
                         <a>Shop Grid Sidebar</a>
                       </li>
                     </ul>
@@ -110,13 +61,7 @@
                     <a>Shop Layout</a>
                     <i class="bi bi-chevron-right"></i>
                     <ul class="shop__ul-ul">
-                      <li>
-                        <a>Shop Grid Sidebar</a>
-                      </li>
-                      <li>
-                        <a>Shop Grid Sidebar</a>
-                      </li>
-                      <li>
+                      <li v-for="n in 3" :key="n">
                         <a>Shop Grid Sidebar</a>
                       </li>
                     </ul>
@@ -125,13 +70,7 @@
                     <a>Shop Layout</a>
                     <i class="bi bi-chevron-right"></i>
                     <ul class="shop__ul-ul">
-                      <li>
-                        <a>Shop Grid Sidebar</a>
-                      </li>
-                      <li>
-                        <a>Shop Grid Sidebar</a>
-                      </li>
-                      <li>
+                      <li v-for="n in 3" :key="n">
                         <a>Shop Grid Sidebar</a>
                       </li>
                     </ul>
@@ -143,23 +82,8 @@
               <a
                 >Blog <i class="bi bi-chevron-down"></i>
                 <ul class="blog__ul">
-                  <li>
-                    <a>Blog Left Sidebar 01</a>
-                  </li>
-                  <li>
-                    <a>Blog Left Sidebar 02</a>
-                  </li>
-                  <li>
-                    <a>Blog Left Sidebar 03</a>
-                  </li>
-                  <li>
-                    <a>Blog Left Sidebar 04</a>
-                  </li>
-                  <li>
-                    <a>Blog Left Sidebar 05</a>
-                  </li>
-                  <li>
-                    <a>Blog Left Sidebar 06</a>
+                  <li v-for="n in 6" :key="n">
+                    <a>Blog Left Sidebar 0{{ n }}</a>
                   </li>
                 </ul>
               </a>
@@ -621,6 +545,7 @@ $color-border-search: #ddd;
           height: 100%;
           > li {
             height: 100%;
+            cursor: pointer;
             > a {
               height: 100%;
               display: flex;

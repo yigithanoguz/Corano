@@ -240,7 +240,7 @@ $color-slide-button: #777777;
         font-size: 1rem;
       }
     }
-    button.slider-btn {
+    .slider-btn {
       height: 43px;
       width: 130px;
       margin-top: 10px;
@@ -250,7 +250,8 @@ $color-slide-button: #777777;
       border-radius: 30px;
       font-size: 0.9rem;
       cursor: pointer;
-      transition: 400ms;
+      transition: all 400ms ease;
+      z-index: 1;
       &:hover {
         background-color: $color-black;
       }
