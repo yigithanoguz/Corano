@@ -444,7 +444,8 @@ $color-border-search: #ddd;
                   gap: 30px;
                   margin-top: 20px;
                   img {
-                    flex-basis: 50%;
+                    // flex-basis: 50%;
+                    width: calc(50% - 15px);
                   }
                 }
               }
